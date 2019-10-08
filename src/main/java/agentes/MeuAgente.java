@@ -4,11 +4,6 @@
  */
 package agentes;
 import jade.core.Agent;
-import jade.core.behaviours.Behaviour;
-import jade.core.AID;
-import jade.core.behaviours.CyclicBehaviour;
-import jade.core.behaviours.TickerBehaviour;
-import jade.lang.acl.ACLMessage;
 
 /**
  *
@@ -17,6 +12,11 @@ import jade.lang.acl.ACLMessage;
 public class MeuAgente extends Agent {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
      * @param args the command line arguments
      */
     protected void setup (){

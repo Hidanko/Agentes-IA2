@@ -1,0 +1,44 @@
+Tarefas:
+Duracao = RAND(1,  4 * nivel_tarefa) // numero aleatório entre 1 hora e 4 vezes o nivel da tarefa)
+Prioridade = RAND(1, 5)
+Programador: Programador responsável pela tarefa, definido pelo Gerente
+Status = [PENDENTE, EM_DESENVOLVIMENTO, EM_TESTE, APROVADO]
+Tempo_gasto = 0
+Tempo_teste = null
+
+BASEADO EM NÌVEIS: (1)JUNIOR, (2)PLENO, (3)SENIOR
+
+Tarefas de nível SENIOR só podem ser realizadas por programadores nível SENIOR
+Tarefas de nível PLENO podem ser realizadas por programadores nível PLENO e SENIOR
+Tarefas de nível JUNIOR podem ser realizadas por programadores JUNIOR, PLENO e SENIOR
+
+
+
+Gerente:
+
+O gerente pode receber entre 0 e 50% do numero de programadores (arredondado para baixo)
+O gerente irá definir prioridade, nivel_tarefa
+O gerente idá dar prioridade a atribuir a tarefa para o programador do mesmo nível, caso 
+1. A cada turno -> Verificar se há nova tarefa -> Atribuir tarefa a partir de lógica a ser definida
+2. A cada X turnos -> Verificar fila de cada programador para ver se há acumulo de serviço em alguém 
+
+
+Programador:
+
+tempo_tarefa = (nivel_programador_que_vai_realizar_a_tarefa - tempo_tarefa_nivel_programador + 1) * 10%
+tarefas_desenvolvimento = []
+tarefas_falha_teste = []
+
+1. A cada turno -> Ouvir se há tarefa nova de gerente ou testadores atribuida a ele -> Enviar para a fila correspondente
+2. A cada turno -> Verificar se ultima tarefa o tempo de duracao = tempo gasto -> CASO SIM -> Enviar para testador && tarefa.status = EM_TESTE && tarefa.teste = RAND(1,3)
+3. A cada turno -> CASO não tenha tarefa ativa -> Verificar fila de retorno testadores -> CASO possuir tarefa -> priorizar a tarefa com maior prioridade
+4. A cada turno -> CASO não tenha tarefa ativa -> Verificar fila de tarefas atribuidas -> CASO possuir tarefa -> mover primeira da fila para ativa
+5. A cada turno -> CASO tenha tarefa ativa -> Adicionar 1 em tempo gasto
+
+Testador:
+fila_de_tarefas_a_serem_testadas = []
+
+1. A cada turno -> Ouvir se há tarefa nova de programador atribuida a ele -> Enviar para fila de teste
+2. A cada turno -> Caso não tenha tarefa ativa -> Verificar lista de tarefas -> CASO possua -> Definir como ativa && tarefa.tempo_gasto = 0 && definir_tempo_teste
+3. A cada turno -> Caso tenha tarefa ativa -> Adicionar 1 em tempo gasto
+4. A cada turno -> Caso tarefa ativa.tempo_gasto = tempo_teste -> 30% de chance de falhar tarefa e retornar para programador / 70% de dar tarefa como APROVADO
