@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class Fila_Tarefas {
 	
-	ArrayList<Tarefas> fila = new ArrayList<Tarefas>(); 
+	ArrayList<Tarefa> fila = new ArrayList<Tarefa>(); 
 	
 	public Fila_Tarefas() {
 		
 	}
 	
-	public void addFila(Tarefas t) {
+	public void addFila(Tarefa t) {
 		this.fila.add(t) ;
 	}
 }

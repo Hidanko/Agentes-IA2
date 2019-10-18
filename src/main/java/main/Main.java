@@ -1,8 +1,8 @@
-package agentes;
+package main;
 
 
 import modelos.Fila_Tarefas;
-import modelos.Tarefas;
+import modelos.Tarefa;
 
 public class Main {
 
