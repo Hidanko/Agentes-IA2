@@ -1,12 +1,14 @@
 package agentes;
 
-import java.util.ArrayList;
-
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import modelos.Nivel;
 import modelos.Tarefa;
 import modelos.TarefaStatus;
+
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Programador extends Agent{
 	
@@ -14,13 +16,14 @@ public class Programador extends Agent{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	ArrayList<Tarefa> tarefas = new ArrayList<Tarefa>();
-	int id_programador;
-	Nivel nivel_programador;
+	private ArrayList<Tarefa> tarefas = new ArrayList<Tarefa>();
+	private Nivel nivelProgramador;
 	
 	public Programador() {
 		super();
-		// TODO Auto-generated constructor stub
+		Random r = new Random();
+		nivelProgramador = Nivel.getByValor(r.nextInt(3)+1);
+
 	}
 	
 	protected void setup() {
@@ -32,8 +35,9 @@ public class Programador extends Agent{
 
 			public void action() {
 				
-				// ESCUTA SE HÁ NOVAS TAREFAS PARA ELE
-				// ESCUTA SE HÁ NOVOS TESTADORES
+				// ESCUTA SE Hï¿½ NOVAS TAREFAS PARA ELE (GERENTE
+				// E TESTADORES)
+				// ESCUTA SE Hï¿½ NOVOS TESTADORES
 				
 				if (tarefas.get(0).getDuracao() == tarefas.get(0).getTempoGasto()) {
 					tarefas.get(0).setStatus(TarefaStatus.EM_TESTE);
@@ -42,22 +46,36 @@ public class Programador extends Agent{
 					// ENVIAR PARA TESTADORES
 					tarefas.remove(0);
 				}
-				
-//				2. A cada turno -> Verificar se ultima tarefa o tempo de duracao = tempo gasto -> CASO SIM -> Enviar para testador && tarefa.status = EM_TESTE && tarefa.teste = RAND(1,3)
-//						3. A cada turno -> CASO nÃ£o tenha tarefa ativa -> Verificar fila de retorno testadores -> CASO possuir tarefa -> priorizar a tarefa com maior prioridade
-//						4. A cada turno -> CASO nÃ£o tenha tarefa ativa -> Verificar fila de tarefas atribuidas -> CASO possuir tarefa -> mover primeira da fila para ativa
-//						5. A cada turno -> CASO tenha tarefa ativa -> Adicionar 1 em tempo gasto
+
+				if (tarefas.size() > 0) {
+
+					if (tarefas.get(0).getStatus() == TarefaStatus.PENDENTE) {
+						tarefas.get(0).setStatus(TarefaStatus.EM_DESENVOLVIMENTO);
+					}
+					tarefas.get(0).setTempoGasto(tarefas.get(0).getTempoGasto() + 1);
+
+				}
 }
 		});
 	}
-	
-	
-	public int getTempoTotalTarefas() {
-		int duracao = 0;
-		for (Tarefa tarefa : tarefas) {
-			duracao += tarefa.getDuracao() - tarefa.getTempoGasto();
+	private int indexTarefaMaiorPrioridade(){
+		int index = -1, valor = -1;
+		for(int i = 0; i < tarefas.size(); i++){
+			if (i == 0 || tarefas.get(i).getPrioridade() > valor){
+				valor = tarefas.get(i).getPrioridade();
+				index = i;
+			}
 		}
-		return duracao;
+		return index;
+	}
+	
+	
+	protected int getTempoTotalTarefas() {
+		AtomicInteger duracao = new AtomicInteger();
+		for (Tarefa tarefa : tarefas) {
+			duracao.addAndGet(tarefa.getDuracao() - tarefa.getTempoGasto());
+		}
+		return duracao.get();
 	}
 	
 }

@@ -7,14 +7,14 @@ import agentes.Testador;
 
 public class Tarefa {
 	
-	int duracao;
-	int prioridade;
-	Nivel nivel;
-	Programador programador;
-	Testador testador;
-	TarefaStatus status;
-	int tempoGasto;
-	int tempoTeste;	
+	private int duracao;
+	private int prioridade;
+	private Nivel nivel;
+	private Programador programador;
+	private Testador testador;
+	private TarefaStatus status;
+	private int tempoGasto;
+	private int tempoTeste;
 	
 	public Tarefa() {
 		Random random = new Random();
