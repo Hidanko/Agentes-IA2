@@ -2,6 +2,7 @@ package agentes;
 
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
+import main.Main;
 import modelos.Nivel;
 import modelos.Tarefa;
 import modelos.TarefaStatus;
@@ -27,6 +28,8 @@ public class Programador extends Agent{
 	}
 	
 	protected void setup() {
+
+		System.out.println("Novo programador "+nivelProgramador+" chamado "+ getLocalName()+" entrou para a empresa!");
 		addBehaviour(new CyclicBehaviour(this) {
 			/**
 			 * 
@@ -34,7 +37,7 @@ public class Programador extends Agent{
 			private static final long serialVersionUID = 1L;
 
 			public void action() {
-				
+				block(Main.delay);
 				// ESCUTA SE H� NOVAS TAREFAS PARA ELE (GERENTE
 				// E TESTADORES)
 				// ESCUTA SE H� NOVOS TESTADORES

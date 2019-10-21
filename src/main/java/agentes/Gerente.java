@@ -6,6 +6,7 @@ import java.util.Random;
 
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
+import main.Main;
 import modelos.Tarefa;
 
 public class Gerente extends Agent {
@@ -29,13 +30,13 @@ public class Gerente extends Agent {
 			private static final long serialVersionUID = 1L;
 
 			public void action() {
-				
-				// ESCUTA SE HÁ NOVOS PROGRAMADORES
+				block(Main.delay);
+				// ESCUTA SE Hï¿½ NOVOS PROGRAMADORES
 				
 				for (int i = 0; i < random.nextInt(filaProgramadores.size()) - 1; i++) {
 					Tarefa tarefa = new Tarefa();
-					System.out.println("Nova tarefa encontrada! Nível " + tarefa.getNivel() + "Duração de "
-							+ tarefa.getDuracao() + " horas e prioridade nível " + tarefa.getPrioridade());
+					System.out.println("Nova tarefa encontrada! Nï¿½vel " + tarefa.getNivel() + "Duraï¿½ï¿½o de "
+							+ tarefa.getDuracao() + " horas e prioridade nï¿½vel " + tarefa.getPrioridade());
 					Programador menor = null;
 					for (int j = 0; j < filaProgramadores.size(); j++) {
 						if (j == 0 || menor.getTempoTotalTarefas() > filaProgramadores.get(j).getTempoTotalTarefas()) {

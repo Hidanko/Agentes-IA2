@@ -2,6 +2,7 @@ package agentes;
 
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
+import main.Main;
 import modelos.Tarefa;
 import modelos.TarefaStatus;
 
@@ -20,6 +21,9 @@ public class Testador extends Agent {
         addBehaviour(new CyclicBehaviour(this) {
 
             public void action() {
+                block(Main.delay);
+
+                // VERIFICA SE HÀ NOVAS TAREFAS
 
                 if (tarefas.size() > 0) {
 
