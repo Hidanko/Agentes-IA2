@@ -1,7 +1,9 @@
 package agentes;
 
+import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
+import jade.lang.acl.ACLMessage;
 import main.Main;
 import modelos.Nivel;
 import modelos.Tarefa;
@@ -25,10 +27,17 @@ public class Programador extends Agent{
 		Random r = new Random();
 		nivelProgramador = Nivel.getByValor(r.nextInt(3)+1);
 
+
+		System.out.println("enviado");
 	}
 	
 	protected void setup() {
-
+		ACLMessage msg = new ACLMessage (ACLMessage.INFORM);
+		msg.addReceiver (new AID( "Gerente" ,AID.ISLOCALNAME));
+		msg.setLanguage ("Português");
+		msg.setOntology ("Aviso");
+		msg.setContent ("Novo programador");
+		send (msg);
 		System.out.println("Novo programador "+nivelProgramador+" chamado "+ getLocalName()+" entrou para a empresa!");
 		addBehaviour(new CyclicBehaviour(this) {
 			/**
@@ -38,10 +47,13 @@ public class Programador extends Agent{
 
 			public void action() {
 				block(Main.delay);
+				System.out.println("a");
 				// ESCUTA SE H� NOVAS TAREFAS PARA ELE (GERENTE
 				// E TESTADORES)
 				// ESCUTA SE H� NOVOS TESTADORES
-				
+				if (tarefas.size() > 0) {
+					
+					
 				if (tarefas.get(0).getDuracao() == tarefas.get(0).getTempoGasto()) {
 					tarefas.get(0).setStatus(TarefaStatus.EM_TESTE);
 					tarefas.get(0).setDuracao(tarefas.get(0).getDuracao() /2);
@@ -50,7 +62,7 @@ public class Programador extends Agent{
 					tarefas.remove(0);
 				}
 
-				if (tarefas.size() > 0) {
+				
 
 					if (tarefas.get(0).getStatus() == TarefaStatus.PENDENTE) {
 						tarefas.get(0).setStatus(TarefaStatus.EM_DESENVOLVIMENTO);

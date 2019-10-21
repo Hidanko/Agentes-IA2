@@ -1,6 +1,7 @@
 package main;
 
 
+import jade.Boot;
 import modelos.ListaFuncionarios;
 
 public class Main {
@@ -11,11 +12,13 @@ public class Main {
 
 
 
-		/*String[] param = new String[2];
+		String[] param = new String[4];
 		param[0] = "-gui";
-		param[1] = "HelloAgent:teste_j.HelloAgent";
+		param[1] = "Gerente:agentes.Gerente";
+		param[2] = "Programador:agentes.Programador";
+		param[3] = "Programador2:agentes.Programador";
 		System.out.println(".");
-		Boot.main(param);*/
+		Boot.main(param);
 		
 
 	}
