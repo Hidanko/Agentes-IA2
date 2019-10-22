@@ -1,11 +1,17 @@
 package modelos;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import agentes.Programador;
 import agentes.Testador;
 
-public class Tarefa {
+public class Tarefa implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	private int duracao;
 	private int prioridade;
