@@ -8,6 +8,7 @@ import modelos.ListaFuncionarios;
 public class Main {
 
 	public static int delay = 5000;
+	private static int idTarefa = 1;
 	public static ListaFuncionarios funcionarios = new ListaFuncionarios();
 	public static void main(String[] args) {
 
@@ -21,4 +22,7 @@ public class Main {
 		
 	}
 
+	public static int getTarefaId(){
+	    return idTarefa++;
+    }
 }

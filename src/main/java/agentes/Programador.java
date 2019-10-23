@@ -59,7 +59,7 @@ public class Programador extends Agent {
 
 			public void action() {
 				block(Main.delay);
-				System.out.println(getName());
+				// Escuta se há novas tarefas para ele
 				ACLMessage msg = myAgent.receive();
 				if (msg != null) {
 					System.out.println(nome +" recebeu nova tarefa");
@@ -81,20 +81,20 @@ public class Programador extends Agent {
 				// ESCUTA SE H� NOVOS TESTADORES
 				if (tarefas.size() > 0) {
 
+					if (tarefas.get(0).getStatus() == TarefaStatus.PENDENTE) {
+						tarefas.get(0).setStatus(TarefaStatus.EM_DESENVOLVIMENTO);
+					}
+					tarefas.get(0).setTempoGasto(tarefas.get(0).getTempoGasto() + 1);
+					System.out.println(nome + " trabalhou por uma hora na tarefa "+tarefas.get(0).getId() );
+
 					if (tarefas.get(0).getDuracao() == tarefas.get(0).getTempoGasto()) {
+						System.out.println(nome + " finalizou a tarefa id "+tarefas.get(0).getId() );
 						tarefas.get(0).setStatus(TarefaStatus.EM_TESTE);
 						tarefas.get(0).setDuracao(tarefas.get(0).getDuracao() / 2);
 						Tarefa tarefaParaEnvio = tarefas.get(0);
 						// ENVIAR PARA TESTADORES
 						tarefas.remove(0);
 					}
-
-					if (tarefas.get(0).getStatus() == TarefaStatus.PENDENTE) {
-						tarefas.get(0).setStatus(TarefaStatus.EM_DESENVOLVIMENTO);
-					}
-					tarefas.get(0).setTempoGasto(tarefas.get(0).getTempoGasto() + 1);
-					System.out.println(myAgent.getName() + " trabalhou por uma hora");
-
 				}
 			}
 		});
@@ -119,4 +119,8 @@ public class Programador extends Agent {
 		return duracao.get();
 	}
 
+	public String getNome(){
+		return this.nome;
+
+	}
 }

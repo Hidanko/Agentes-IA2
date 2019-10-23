@@ -5,6 +5,7 @@ import java.util.Random;
 
 import agentes.Programador;
 import agentes.Testador;
+import main.Main;
 
 public class Tarefa implements Serializable {
 	
@@ -12,7 +13,7 @@ public class Tarefa implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	private int id;
 	private int duracao;
 	private int prioridade;
 	private Nivel nivel;
@@ -23,6 +24,7 @@ public class Tarefa implements Serializable {
 	private int tempoTeste;
 	
 	public Tarefa() {
+		this.id = Main.getTarefaId();
 		Random random = new Random();
 		this.nivel = Nivel.getByValor(random.nextInt(3)+1);
 		this.duracao = (random.nextInt(4) * nivel.getValor())+1; 
@@ -32,6 +34,7 @@ public class Tarefa implements Serializable {
 		this.status = TarefaStatus.PENDENTE;
 		this.tempoGasto = 0;
 		this.tempoTeste = 0;
+
 	}
 	
 	public int getDuracao() {
@@ -99,5 +102,5 @@ public class Tarefa implements Serializable {
 		this.tempoTeste = tempoTeste;
 	}
 
-	
+	public int getId(){ return this.id;	}
 }
