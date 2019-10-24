@@ -22,12 +22,14 @@ public class Tarefa implements Serializable {
 	private TarefaStatus status;
 	private int tempoGasto;
 	private int tempoTeste;
+	private int duracaoTeste;
 	
 	public Tarefa() {
 		this.id = Main.getTarefaId();
 		Random random = new Random();
 		this.nivel = Nivel.getByValor(random.nextInt(3)+1);
-		this.duracao = (random.nextInt(4) * nivel.getValor())+1; 
+		this.duracao = (random.nextInt(4) * nivel.getValor())+2;
+		this.duracaoTeste = duracao /2;
 		this.prioridade = random.nextInt(5)+1 ;
 		this.programador = null;
 		this.testador = null;
@@ -41,9 +43,7 @@ public class Tarefa implements Serializable {
 		return duracao;
 	}
 
-	public void setDuracao(int duracao) {
-		this.duracao = duracao;
-	}
+	public int getDuracaoTeste(){ return duracaoTeste;}
 
 	public int getPrioridade() {
 		return prioridade;
@@ -82,7 +82,7 @@ public class Tarefa implements Serializable {
 	}
 
 	public void setStatus(TarefaStatus status) {
-		System.out.println("Tarefa de status "+ this.status + " alterado para "+ status);
+		System.out.println("Tarefa "+ id+ "  de status "+ this.status + " alterado para "+ status);
 		this.status = status;
 	}
 

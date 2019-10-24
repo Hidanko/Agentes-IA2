@@ -14,6 +14,7 @@ import modelos.TarefaStatus;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -61,7 +62,7 @@ public class Programador extends Agent {
 			private static final long serialVersionUID = 1L;
 
 			public void onTick() {
-				System.out.println(nome);
+				System.out.println("");
 				// Escuta se há novas tarefas para ele
 				ACLMessage msg = myAgent.receive();
 				if (msg != null) {
@@ -83,17 +84,20 @@ public class Programador extends Agent {
 				}
 
 				if (tarefas.size() > 0) {
-
+					// Busca tarefa com maior prioridade, define como index 0 e inicia o desenvolvimento
 					if (tarefas.get(0).getStatus() == TarefaStatus.PENDENTE) {
+						if(tarefas.size() > 1) {
+							Collections.swap(tarefas, 0, indexTarefaMaiorPrioridade());
+						}
 						tarefas.get(0).setStatus(TarefaStatus.EM_DESENVOLVIMENTO);
 					}
 					tarefas.get(0).setTempoGasto(tarefas.get(0).getTempoGasto() + 1);
-					System.out.println(nome + " trabalhou por uma hora na tarefa "+tarefas.get(0).getId() );
+					System.out.println(nome + " trabalhou por uma hora na tarefa "+tarefas.get(0).getId() + " restante: "+ (tarefas.get(0).getDuracao() - tarefas.get(0).getTempoGasto()));
 
 					if (tarefas.get(0).getDuracao() == tarefas.get(0).getTempoGasto()) {
 						System.out.println(nome + " finalizou a tarefa id "+tarefas.get(0).getId() );
 						tarefas.get(0).setStatus(TarefaStatus.EM_TESTE);
-						tarefas.get(0).setDuracao(tarefas.get(0).getDuracao() / 2);
+						tarefas.get(0).setTempoTeste(0);
 						Tarefa tarefaParaEnvio = tarefas.get(0);
 						// Enviando tarefa para testador mais livre
 						ACLMessage tarefaMsg = new ACLMessage(ACLMessage.INFORM);

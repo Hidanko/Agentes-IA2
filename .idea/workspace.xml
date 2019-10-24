@@ -5,10 +5,16 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/APDescription.txt" beforeDir="false" afterPath="$PROJECT_DIR$/APDescription.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MTPs-Main-Container.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MTPs-Main-Container.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/agentes/Gerente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agentes/Gerente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/agentes/Programador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agentes/Programador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/agentes/Testador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agentes/Testador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelos/ListaFuncionarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelos/ListaFuncionarios.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/agentes_modelos/AgenteAlarmado.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/agentes_modelos/AgenteBombeiro.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/agentes_modelos/HelloAgent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/agentes_modelos/MeuAgente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/agentes_modelos/MeuComportamento.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modelos/Tarefa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelos/Tarefa.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -122,6 +128,7 @@
       <workItem from="1571678531945" duration="1998000" />
       <workItem from="1571693659168" duration="4946000" />
       <workItem from="1571831881773" duration="4922000" />
+      <workItem from="1571918079402" duration="7609000" />
     </task>
     <task id="LOCAL-00001" summary="implementação das tarefas de cada agente">
       <created>1571623809922</created>

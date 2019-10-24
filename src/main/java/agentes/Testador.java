@@ -58,9 +58,9 @@ public class Testador extends Agent {
                 if (tarefas.size() > 0) {
 
                     tarefas.get(0).setTempoTeste(tarefas.get(0).getTempoTeste() + 1);
-                    System.out.println("Testador "+nome + " trabalhou por uma hora na tarefa "+tarefas.get(0).getId() );
+                    System.out.println("Testador "+nome + " trabalhou por uma hora na tarefa "+tarefas.get(0).getId()  + " restante: "+ (tarefas.get(0).getDuracaoTeste() -tarefas.get(0).getTempoTeste()));
 
-                    if (tarefas.get(0).getDuracao() == tarefas.get(0).getTempoTeste()) {
+                    if (tarefas.get(0).getDuracaoTeste() >= tarefas.get(0).getTempoTeste()) {
                         Random r = new Random();
                         if (!r.nextBoolean()) {
                             System.out.println("Testador "+nome+" validou a tarefa "+tarefas.get(0).getId()+" mas havia erros pendentes");
@@ -77,6 +77,7 @@ public class Testador extends Agent {
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
+                            send(tarefaMsg);
                         }else{
                             System.out.println("Testador "+nome+" validou a tarefa "+tarefas.get(0).getId()+ " e ela foi finalizada");
                         }
@@ -90,7 +91,7 @@ public class Testador extends Agent {
     protected int getTempoTotalTarefas() {
         AtomicInteger duracao = new AtomicInteger();
         for (Tarefa tarefa : tarefas) {
-            duracao.addAndGet(tarefa.getDuracao() - tarefa.getTempoGasto());
+            duracao.addAndGet(tarefa.getDuracaoTeste() - tarefa.getTempoGasto());
         }
         return duracao.get();
     }

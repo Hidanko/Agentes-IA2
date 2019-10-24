@@ -35,7 +35,7 @@ public class Gerente extends Agent {
 
             public void onTick() {
                 block(Main.delay);
-				System.out.println("Gerente com "+filaProgramadores.size()+" funcionarios");
+//				System.out.println("Gerente com "+filaProgramadores.size()+" funcionarios");
 
                 // Novo programador
                 ACLMessage msg = myAgent.receive();
@@ -63,10 +63,9 @@ public class Gerente extends Agent {
 			protected void onTick() {
 				// Criando nova tarefa
 				if (filaProgramadores.size() >= 2) {
-					System.out.println("entrou");
 					for (int i = 0; i < random.nextInt(filaProgramadores.size()); i++) {
 						Tarefa tarefa = new Tarefa();
-						System.out.println("Nova tarefa id"+tarefa.getId()+"encontrada!. Nível " + tarefa.getNivel() + "Duração de "
+						System.out.println("Nova tarefa id "+tarefa.getId()+" encontrada!. Nível " + tarefa.getNivel() + "Duração de "
 								+ tarefa.getDuracao() + " horas e prioridade nível " + tarefa.getPrioridade());
 						Programador menor = null;
 						for (int j = 0; j < filaProgramadores.size(); j++) {
@@ -74,7 +73,7 @@ public class Gerente extends Agent {
 								menor = filaProgramadores.get(j);
 							}
 						}
-						System.out.println("Menor = "+ menor.getNome());
+						tarefa.setProgramador(menor);
 						// Enviando nova tarefa
 						ACLMessage tarefaMsg = new ACLMessage(ACLMessage.INFORM);
 						tarefaMsg.addReceiver(menor.getAID());
@@ -87,7 +86,7 @@ public class Gerente extends Agent {
 							System.out.println("Falha ao serializar objeto");
 							e.printStackTrace();
 						}
-						System.out.println("Enviando tarefa para " + menor.getName());
+						System.out.println("Enviando tarefa para " + menor.getNome());
 						send(tarefaMsg);
 
 					}
