@@ -3,15 +3,18 @@ package agentes;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
+import jade.core.behaviours.TickerBehaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.UnreadableException;
 import main.Main;
+import modelos.ListaFuncionarios;
 import modelos.Nivel;
 import modelos.Tarefa;
 import modelos.TarefaStatus;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -51,14 +54,14 @@ public class Programador extends Agent {
 		send(msg);
 		System.out.println(
 				"Novo programador " + nivelProgramador + " chamado " + getLocalName() + " entrou para a empresa!");
-		addBehaviour(new CyclicBehaviour(this) {
+		addBehaviour(new TickerBehaviour(this, Main.delay) {
 			/**
 			 * 
 			 */
 			private static final long serialVersionUID = 1L;
 
-			public void action() {
-				block(Main.delay);
+			public void onTick() {
+				System.out.println(nome);
 				// Escuta se há novas tarefas para ele
 				ACLMessage msg = myAgent.receive();
 				if (msg != null) {
@@ -66,19 +69,19 @@ public class Programador extends Agent {
 					String content = msg.getContent();
 //					if (msg.getAllReceiver()) {
 					try {
-						Tarefa p = (Tarefa) msg.getContentObject();
-						tarefas.add(p);
-						System.out.println("Novo programador encontrado!");
+						if (Tarefa.class.isInstance(msg.getContentObject())) {
+							Tarefa p = (Tarefa) msg.getContentObject();
+							tarefas.add(p);
+							System.out.println(nome+" recebeu uma nova tarefa!");
+						} else{
+							System.out.println("Nao era tarefa");
+						}
 					} catch (UnreadableException e) {
 						System.out.println("Falha ao ler objeto serializado");
 						e.printStackTrace();
 					}
-//					}
 				}
 
-				// ESCUTA SE H� NOVAS TAREFAS PARA ELE (GERENTE
-				// E TESTADORES)
-				// ESCUTA SE H� NOVOS TESTADORES
 				if (tarefas.size() > 0) {
 
 					if (tarefas.get(0).getStatus() == TarefaStatus.PENDENTE) {
@@ -92,12 +95,26 @@ public class Programador extends Agent {
 						tarefas.get(0).setStatus(TarefaStatus.EM_TESTE);
 						tarefas.get(0).setDuracao(tarefas.get(0).getDuracao() / 2);
 						Tarefa tarefaParaEnvio = tarefas.get(0);
-						// ENVIAR PARA TESTADORES
+						// Enviando tarefa para testador mais livre
+						ACLMessage tarefaMsg = new ACLMessage(ACLMessage.INFORM);
+						tarefaMsg.addReceiver(getTestadorMaisLivre().getAID());
+						tarefaMsg.setLanguage("Português");
+						tarefaMsg.setOntology("Aviso");
+						tarefaMsg.setContent("Nova Tarefa");
+						try {
+							tarefaMsg.setContentObject(tarefas.get(0));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						send(tarefaMsg);
+
 						tarefas.remove(0);
 					}
 				}
 			}
 		});
+
+		ListaFuncionarios.cadastraProgramador(this);
 	}
 
 	private int indexTarefaMaiorPrioridade() {
@@ -122,5 +139,17 @@ public class Programador extends Agent {
 	public String getNome(){
 		return this.nome;
 
+	}
+
+	private Testador getTestadorMaisLivre(){
+		List<Testador> testadores = ListaFuncionarios.getTestadores();
+		int index = -1, valor = -1;
+		for (int i = 0; i < testadores.size(); i++){
+			if (i == 0 || testadores.get(i).getTempoTotalTarefas() < valor){
+				valor = testadores.get(i).getTempoTotalTarefas();
+				index = i;
+			}
+		}
+		return testadores.get(index);
 	}
 }

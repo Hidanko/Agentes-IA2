@@ -11,15 +11,20 @@ public class ListaFuncionarios {
     private static List<Programador> programadores = new ArrayList<Programador>();
     private static List<Testador> testadores = new ArrayList<Testador>();
 
+    public static List<Programador> getProgramadores(){
+        return programadores;
+    }
 
-    public void cadastraProgramador(Programador programador){
+    public static List<Testador> getTestadores(){ return testadores; }
+
+    public static void cadastraProgramador(Programador programador){
         if (programadores == null){
             programadores = new ArrayList<Programador>();
         }
         programadores.add(programador);
     }
 
-    public void cadastraTestador(Testador testador){
+    public static void cadastraTestador(Testador testador){
         if (testadores == null){
             testadores = new ArrayList<Testador>();
         }

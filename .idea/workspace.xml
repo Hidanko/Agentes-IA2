@@ -3,11 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="05b75b43-8bb3-4179-a1e8-4e4c74dc7f32" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/agentes/Gerente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agentes/Gerente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APDescription.txt" beforeDir="false" afterPath="$PROJECT_DIR$/APDescription.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MTPs-Main-Container.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MTPs-Main-Container.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/agentes/Programador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agentes/Programador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/agentes/Testador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agentes/Testador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelos/Tarefa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelos/Tarefa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modelos/ListaFuncionarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelos/ListaFuncionarios.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -168,5 +169,16 @@
     <MESSAGE value="Correções" />
     <MESSAGE value="Dicas professor" />
     <option name="LAST_COMMIT_MESSAGE" value="Dicas professor" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/agentes/Testador.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

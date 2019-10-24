@@ -16,7 +16,7 @@ public class Main {
 		
 		String[] param = new String[2];
 		param[0] = "-gui";
-		param[1] = "  Gerente:agentes.Gerente;programador:agentes.Programador(programador);programador2:agentes.Programador(programador2)";
+		param[1] = "  Gerente:agentes.Gerente;programador:agentes.Programador(programador);programador2:agentes.Programador(programador2);testador:agentes.Testador(testador)";
 //		param[2] = "";
 		Boot.main(param);
 		
