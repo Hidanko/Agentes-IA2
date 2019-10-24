@@ -3,18 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="05b75b43-8bb3-4179-a1e8-4e4c74dc7f32" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APDescription.txt" beforeDir="false" afterPath="$PROJECT_DIR$/APDescription.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MTPs-Main-Container.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MTPs-Main-Container.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/agentes/Gerente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agentes/Gerente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/agentes/Programador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agentes/Programador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/agentes/Testador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agentes/Testador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/agentes_modelos/AgenteAlarmado.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/agentes_modelos/AgenteBombeiro.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/agentes_modelos/HelloAgent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/agentes_modelos/MeuAgente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/agentes_modelos/MeuComportamento.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelos/Tarefa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelos/Tarefa.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -128,7 +117,7 @@
       <workItem from="1571678531945" duration="1998000" />
       <workItem from="1571693659168" duration="4946000" />
       <workItem from="1571831881773" duration="4922000" />
-      <workItem from="1571918079402" duration="7609000" />
+      <workItem from="1571918079402" duration="8242000" />
     </task>
     <task id="LOCAL-00001" summary="implementação das tarefas de cada agente">
       <created>1571623809922</created>
@@ -151,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571698435157</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Correcoes finais + README">
+      <created>1571927184387</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1571927184387</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,7 +171,8 @@
     <MESSAGE value="Correções Testador" />
     <MESSAGE value="Correções" />
     <MESSAGE value="Dicas professor" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dicas professor" />
+    <MESSAGE value="Correcoes finais + README" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correcoes finais + README" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
