@@ -1,4 +1,4 @@
-#Aplicação:
+# Aplicação:
 
 >DELAY regulável em Main.delay (Atual 5000 milissegundos)
 
@@ -8,7 +8,7 @@ PROGRAMADOR realiza a tarefa, escolhe o TESTADOR mais disponivel e envia para el
 TESTADOR valida a tarefa, a tarefa pode ser definida como realizada ou enviada de volta para o PROGRAMADOR para correção
 
 
-#TAREFA:
+# TAREFA:
 
 	private int id;
 	private int duracao;
@@ -21,15 +21,15 @@ TESTADOR valida a tarefa, a tarefa pode ser definida como realizada ou enviada d
 	private int tempoTeste;
 
 
-##TAREFA STATUS
+## TAREFA STATUS
 
 	PENDENTE, EM_DESENVOLVIMENTO, INDO_PARA_TESTE, EM_TESTE, CONCLUIDO
 
-##NIVEL
+## NIVEL
     JUNIOR, PLENO, SENIOR;
 
 
-#GERENTE:
+# GERENTE:
 
 Um por sistema
 
@@ -40,7 +40,7 @@ Um por sistema
  e envia para o PROGRAMADOR mais disponível
 
 
-#PROGRAMADOR:
+# PROGRAMADOR:
 
 Inicialmente 2 no sistema, podendo ser adicionados mais durante a execução
 
@@ -53,7 +53,7 @@ Inicialmente 2 no sistema, podendo ser adicionados mais durante a execução
 - Tick de 1 delay -> "Gasta" uma hora na tarefa atual, verifica se a tarefa foi finalizada, se sim, envia para o TESTADOR com menos tempo de tarefa pendente
 
 
-#TESTADOR:
+# TESTADOR:
 
 **Behaviour:**
 
