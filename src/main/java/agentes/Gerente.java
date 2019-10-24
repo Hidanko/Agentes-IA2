@@ -63,9 +63,9 @@ public class Gerente extends Agent {
 			protected void onTick() {
 				// Criando nova tarefa
 				if (filaProgramadores.size() >= 2) {
-					for (int i = 0; i < random.nextInt(filaProgramadores.size()); i++) {
+					for (int i = 0; i < random.nextInt(filaProgramadores.size()+1); i++) {
 						Tarefa tarefa = new Tarefa();
-						System.out.println("Nova tarefa id "+tarefa.getId()+" encontrada!. Nível " + tarefa.getNivel() + "Duração de "
+						System.out.println("Nova tarefa id "+tarefa.getId()+" encontrada! Nível " + tarefa.getNivel() + ". Duração de "
 								+ tarefa.getDuracao() + " horas e prioridade nível " + tarefa.getPrioridade());
 						Programador menor = null;
 						for (int j = 0; j < filaProgramadores.size(); j++) {

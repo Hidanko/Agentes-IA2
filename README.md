@@ -31,12 +31,16 @@
 
 ## GERENTE:
 
+	private List<Tarefa> tarefas;
+	private Nivel nivelProgramador;
+	private String nome;
+
 Um por sistema
 
 **Behaviour:**
 
-- Tick de 1 delay -> A cada ciclo ele busca se há novos programadores
-- Tick de 3 delay -> A cada ciclo ele cria uma nova tarefa com NIVEL, DURACAO e COMPLEXIDADE definidos aleatóriamente
+1. Tick de 1 delay -> A cada ciclo ele busca se há novos programadores
+2. Tick de 3 delay -> A cada ciclo ele cria uma nova tarefa com NIVEL, DURACAO e COMPLEXIDADE definidos aleatóriamente
  e envia para o PROGRAMADOR mais disponível
 
 
@@ -49,13 +53,13 @@ Inicialmente 2 no sistema, podendo ser adicionados mais durante a execução
 
 **Behaviour:**
 
-- Tick de 1 delay -> Busca por novas tarefas vindas do GERENTE ou dos TESTADORES
-- Tick de 1 delay -> "Gasta" uma hora na tarefa atual, verifica se a tarefa foi finalizada, se sim, envia para o TESTADOR com menos tempo de tarefa pendente
+1. Tick de 1 delay -> Busca por novas tarefas vindas do GERENTE ou dos TESTADORES
+2. Tick de 1 delay -> "Gasta" uma hora na tarefa atual, verifica se a tarefa foi finalizada, se sim, envia para o TESTADOR com menos tempo de tarefa pendente
 
 
 ## TESTADOR:
 
 **Behaviour:**
 
-- Tick de 1 delay -> Busca por novas tarefas vindas dos PROGRAMADORES
-- Tick de 1 delay -> "Gasta" uma hora validando a tarefa atual, verifica se foi finalizado, 
+1. Tick de 1 delay -> Busca por novas tarefas vindas dos PROGRAMADORES
+2. Tick de 1 delay -> "Gasta" uma hora validando a tarefa atual, verifica se foi finalizado, 
