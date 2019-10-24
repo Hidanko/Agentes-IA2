@@ -58,12 +58,14 @@ public class Gerente extends Agent {
 
         });
 
-        addBehaviour(new TickerBehaviour(this, Main.delay * 3) {
+        addBehaviour(new TickerBehaviour(this, Main.delay * 2) {
 			@Override
 			protected void onTick() {
+                System.out.println(filaProgramadores.size());
 				// Criando nova tarefa
 				if (filaProgramadores.size() >= 2) {
 					for (int i = 0; i < random.nextInt(filaProgramadores.size()+1); i++) {
+
 						Tarefa tarefa = new Tarefa();
 						System.out.println("Nova tarefa id "+tarefa.getId()+" encontrada! Nível " + tarefa.getNivel() + ". Duração de "
 								+ tarefa.getDuracao() + " horas e prioridade nível " + tarefa.getPrioridade());

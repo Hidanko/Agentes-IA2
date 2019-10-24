@@ -34,7 +34,6 @@ public class Programador extends Agent {
 		Random r = new Random();
 		nivelProgramador = Nivel.getByValor(r.nextInt(3) + 1);
 
-		System.out.println("enviado");
 	}
 
 	protected void setup() {
@@ -66,14 +65,22 @@ public class Programador extends Agent {
 				// Escuta se há novas tarefas para ele
 				ACLMessage msg = myAgent.receive();
 				if (msg != null) {
-					System.out.println(nome +" recebeu nova tarefa");
+					System.out.println(nome +" recebeu nova mensagem");
 					String content = msg.getContent();
 //					if (msg.getAllReceiver()) {
 					try {
 						if (Tarefa.class.isInstance(msg.getContentObject())) {
 							Tarefa p = (Tarefa) msg.getContentObject();
-							tarefas.add(p);
-							System.out.println(nome+" recebeu uma nova tarefa!");
+							boolean naoAdiciona = false;
+							for (Tarefa tar: tarefas) {
+								if (p.getId() == tar.getId()) {
+									naoAdiciona = true;
+									break;
+								}
+							}
+							if(!naoAdiciona) {
+								tarefas.add(p);
+							}System.out.println(nome+" recebeu a tarefa "+p.getId());
 						} else{
 							System.out.println("Nao era tarefa");
 						}
@@ -132,7 +139,7 @@ public class Programador extends Agent {
 		return index;
 	}
 
-	protected int getTempoTotalTarefas() {
+	protected synchronized int getTempoTotalTarefas() {
 		AtomicInteger duracao = new AtomicInteger();
 		for (Tarefa tarefa : tarefas) {
 			duracao.addAndGet(tarefa.getDuracao() - tarefa.getTempoGasto());
